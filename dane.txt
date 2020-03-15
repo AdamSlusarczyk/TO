@@ -1,0 +1,39 @@
+Etap 1 (tygodnie 1-2) - Na ten etap należy wykonać dwie rzeczy. Po pierwsze wybrać temat. Po tym terminie tematy nie będą już przydzielane. Po drugie należy wgrać na serwer np. git plik o nazwie dane.txt z następującymi informacjami:
+*nazwiska, imiona, adresy mailowe oraz numery grup członków zespołu,
+Grupa 2ID21B
+Denisa Stępień denisa.st@onet.pl, 
+Adam Ślusarczyk logn5@o2.pl
+
+* temat projektu,
+17. Wzorce projektowe
+W części teoretycznej należy zawrzeć omówienie wzorców zaproponowanych przez tzw. Bandę Czterech wraz z przykładowymi zastosowaniami. 
+W części praktycznej należy opracować narzędzie służące do generowania kodu źródłowego zgodnego ze tymi wzorcami.
+
+* spis technologii, które będą używane (systemów, języków programowania, najważniejszych bibliotek, frameworków, itp.)
+C#, .Net, WPF, Visual Studio, prawdopodobnie T4(Text Template Transformation Toolkit) do generowania kodu źródłowego
+
+* realistyczny plan pracy wraz z listą funkcjonalności, które zostaną zaimplementowane,
+1. Opracowanie częsci teoretycznej wraz z omówieniem wzorców projektowych zaproponowanych przez tzw. Bandę Czterech wraz z przykładowymi zastosowaniami.
+
+2. Opracowanie szablonów, które będa umożliwiały wygenerowanie szkieletu danego wzorca projektowego na podstawie zadanych parametrów.
+	Do wygenerowania 2 wzorce konstrukcyjne, 2 wzorce strukturalne, 3 wzorce operacyjne.
+
+2. Sparametryzowanie szablonów (możliwość przekazania określonych zmiennych i na ich podstawie wygenerowanie kodu źródłowego).
+
+3. Stworzenie interfejsu graficznego w WPF umożliwiającego interakcję z użytkownikiem i wygenerowanie określonych wzorców na podstawie parametrów zależnych od danego wzorca.
+   Możliwość wyświetlenia wygenerowanych plików.
+
+* podział prac w zespole,
+Wstępny podział pracy:
+Denisa - opracowanie szablonów wzorców, składowych klas i interfejsów; generowanie wzorców uwzględniając zadane parametry. 
+Adam - interfejs użytkownika, który umożliwi wybranie parametrów przekazywanych do szablonu oraz wygenerowanie szkieletu wzorców projektowych. 
+	   Nastepnie wyświetli użytkownikowi wygenerowany kod z możliwością zapisania do pliku.
+
+Podział pracy może ulec zmianie. W zależności od tego ile pracy będzie potrzebne do wykonania danej części. 
+Faktyczny zakres pracy będzie widoczny w systemie kontroli wersji git. 
+
+* tematy prac inżynierskich i (jeżeli są znane, to również) magisterskich studentów realizujących projekt.
+Aplikacja internetowa "Wirtualny dziekanat".
+Aplikacja mobilna do lokalizacji urządzenia na podstawie sygnału wi-fi.
+
+(tematy prac magisterskich nie są znane)

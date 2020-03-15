@@ -1,0 +1,15 @@
+C:\Users\Admin\source\repos\Pattern\Pattern\obj\Debug\Pattern.csprojAssemblyReference.cache
+C:\Users\Admin\source\repos\Pattern\Pattern\obj\Debug\Pattern.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\Pattern\Pattern\bin\Debug\Pattern.exe.config
+C:\Users\Admin\source\repos\Pattern\Pattern\bin\Debug\Pattern.exe
+C:\Users\Admin\source\repos\Pattern\Pattern\bin\Debug\Pattern.pdb
+C:\Users\Admin\source\repos\Pattern\Pattern\bin\Debug\Microsoft.VisualStudio.TextTemplating.15.0.dll
+C:\Users\Admin\source\repos\Pattern\Pattern\bin\Debug\Microsoft.VisualStudio.TextTemplating.Interfaces.10.0.dll
+C:\Users\Admin\source\repos\Pattern\Pattern\bin\Debug\Microsoft.VisualStudio.TextTemplating.Interfaces.11.0.dll
+C:\Users\Admin\source\repos\Pattern\Pattern\bin\Debug\System.Collections.Immutable.dll
+C:\Users\Admin\source\repos\Pattern\Pattern\bin\Debug\Microsoft.VisualStudio.TextTemplating.15.0.xml
+C:\Users\Admin\source\repos\Pattern\Pattern\bin\Debug\Microsoft.VisualStudio.TextTemplating.Interfaces.10.0.xml
+C:\Users\Admin\source\repos\Pattern\Pattern\bin\Debug\Microsoft.VisualStudio.TextTemplating.Interfaces.11.0.xml
+C:\Users\Admin\source\repos\Pattern\Pattern\obj\Debug\Pattern.csproj.CopyComplete
+C:\Users\Admin\source\repos\Pattern\Pattern\obj\Debug\Pattern.exe
+C:\Users\Admin\source\repos\Pattern\Pattern\obj\Debug\Pattern.pdb
