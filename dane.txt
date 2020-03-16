@@ -13,24 +13,48 @@ W części praktycznej należy opracować narzędzie służące do generowania k
 C#, .Net, WPF, Visual Studio, prawdopodobnie T4(Text Template Transformation Toolkit) do generowania kodu źródłowego
 
 * realistyczny plan pracy wraz z listą funkcjonalności, które zostaną zaimplementowane,
-1. Opracowanie częsci teoretycznej wraz z omówieniem wzorców projektowych zaproponowanych przez tzw. Bandę Czterech wraz z przykładowymi zastosowaniami.
+•	Etap 2 (tygodnie 3-4)
+Przygotowanie szablonów w t4 do tworzenia interfejsów, klas wraz z metodami. 
+Stworzenie infrastruktury projektu. Stworzenie okna głównego interfejsu użytkownika. Rozpoczęcie omawiania części teoretycznej.
+•	Etap 3 (tygodnie 5-6)
+Kontynuowanie tworzenia części teoretycznej. Przygotowanie serwisów do tworzenia interfejsów, klas wraz z metodami w trakcie działania programu na podstawie utworzonych wcześniej szablonów. 
+Utworzenie 1 ze wzorców. Stworzenie okna pozwalającego na podgląd wygenerowanego kodu oraz zapis do pliku.
+•	Etap 4 (tygodnie 7-8)
+Użycie szablonów do tworzenia  2 wybranych wzorców . Tworzenie okien przystosowanych do wymogów stawianych przez wzorce projektowe, pozwalających na modyfikację generowanego kodu (modyfikacja klas i ich metod). 
+Łączenie serwisów tworzących kod źródłowy z interfejsem użytkownika.
+•	Etap 5 (tygodnie 9-10)
+Użycie szablonów do tworzenia 3 kolejnych wybranych wzorców . Tworzenie okien przystosowanych do wymogów stawianych przez wzorce projektowe, pozwalających na modyfikację generowanego kodu (modyfikacja klas i ich metod). 
+Łączenie serwisów tworzących kod źródłowy z interfejsem użytkownika.
+•	Etap 6 (tygodnie 11-12)
+Użycie szablonów do tworzenia 2 kolejnych wzorców . Tworzenie okien przystosowanych do wymogów stawianych przez wzorce projektowe, pozwalających na modyfikację generowanego kodu (modyfikacja klas i ich metod). 
+Łączenie serwisów tworzących kod źródłowy z interfejsem użytkownika. 
+•	Etap 7 (tygodnie 13-14)
+Zapisywanie wygenerowanego kodu źródłowego do plików. Poprawki, testowanie działania. Przygotowanie sprawozdania i opracowanie w nim części teoretycznej . 
+Tworzenie okien przystosowanych do wymogów stawianych przez wzorce projektowe, pozwalających na modyfikację generowanego kodu (modyfikacja klas i ich metod). 
+Łączenie serwisów tworzących kod źródłowy z interfejsem użytkownika.
+•	Etap 8 (tydzień 15) - oddanie pracy   
 
-2. Opracowanie szablonów, które będa umożliwiały wygenerowanie szkieletu danego wzorca projektowego na podstawie zadanych parametrów.
-	Do wygenerowania 2 wzorce konstrukcyjne, 2 wzorce strukturalne, 3 wzorce operacyjne.
+Interfejs aplikacji :
+Główne okno interfejsu będzie składało się z rozwijanej listy pozwalającej na wybór wzorca projektowego oraz przycisku pozwalającego przejść do kolejnego okna interfejsu. 
+W kolejnym oknie interfejsu będą znajdowały się kontrolki przy pomocy których, użytkownik będzie mógł wybrać przestrzeń nazw i ilość generowanych klas, oraz lista zawierająca nazwy klas. 
+Klikając na daną nazwę, a następnie na odpowiedni przycisk, użytkownik będzie mógł przejść do kolejnego okna, 
+umożliwiającego konfigurację wybranej klasy (wybór nazwy klasy, ilość metod). 
+W tym oknie będzie znajdować się kolejna lista która będzie zawierać nazwy wszystkich metod. 
+Wybór z listy metody i odpowiedniego przycisku przeniesie użytkownika do kolejnego okna, 
+umożliwiającego konfigurację wybranej metody (zmiana ilości parametrów i ich typów oraz zwracany typ danej metody). 
+Lista parametrów znajdująca się w tym oknie umożliwi modyfikację parametrów metody. 
+Po zakończeniu konfiguracji generowanego kodu, 
+przy pomocy przycisku w głównym oknie programu, 
+użytkownik będzie mógł przejrzeć oraz zapisać wygenerowany kod (zakładki z odpowiednimi klasami, interfejsami).
+Wygląd interfejsu może się różnić w przypadku różnych wzorców.
 
-2. Sparametryzowanie szablonów (możliwość przekazania określonych zmiennych i na ich podstawie wygenerowanie kodu źródłowego).
-
-3. Stworzenie interfejsu graficznego w WPF umożliwiającego interakcję z użytkownikiem i wygenerowanie określonych wzorców na podstawie parametrów zależnych od danego wzorca.
-   Możliwość wyświetlenia wygenerowanych plików.
-
+W projekcie planujemy umożliwić tworzenie szablonów dla 8 wybranych wzorców. 2 strukturalne, 2 konstrukcyjne i 4 operacyjne.
 * podział prac w zespole,
 Wstępny podział pracy:
-Denisa - opracowanie szablonów wzorców, składowych klas i interfejsów; generowanie wzorców uwzględniając zadane parametry. 
-Adam - interfejs użytkownika, który umożliwi wybranie parametrów przekazywanych do szablonu oraz wygenerowanie szkieletu wzorców projektowych. 
-	   Nastepnie wyświetli użytkownikowi wygenerowany kod z możliwością zapisania do pliku.
-
-Podział pracy może ulec zmianie. W zależności od tego ile pracy będzie potrzebne do wykonania danej części. 
-Faktyczny zakres pracy będzie widoczny w systemie kontroli wersji git. 
+Denisa Stępień – część związana z opracowanie szablonów wzorców, składowych klas i interfejsów; generowanie kodu źródłowego dla wybranych wzorców uwzględniając zadane parametry. 
+Adam Ślusarczyk- interfejs użytkownika, który umożliwi wybranie parametrów przekazywanych do szablonu oraz wygenerowanie szkieletu wzorców projektowych. 
+Podział pracy może ulec zmianie. W zależności od tego ile pracy będzie potrzebne do wykonania danej części.  Faktyczny zakres pracy będzie widoczny w systemie kontroli wersji git. 
+Część teoretyczną planujemy omówić wspólnie.
 
 * tematy prac inżynierskich i (jeżeli są znane, to również) magisterskich studentów realizujących projekt.
 Aplikacja internetowa "Wirtualny dziekanat".
