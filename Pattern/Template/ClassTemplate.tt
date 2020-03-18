@@ -1,0 +1,20 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ parameter type="System.Collections.Generic.List<Pattern.Model.Method>" name="methods" #>
+<#@ parameter type="Pattern.Model.ClassData" name="classParameters" #>
+namespace <#=classParameters.Namespace#> {
+{
+   public class <#=classParameters.ClassName#><#if(!String.IsNullOrEmpty(classParameters.BaseClassName)){#> : <#=classParameters.BaseClassName#><#}#>{
+   <#for(int i=0; i<classParameters.Parameters.Count;i++){#>
+	 <#if(!String.IsNullOrEmpty(classParameters.Parameters[i].AccessModifier)){#><#=classParameters.Parameters[i].AccessModifier#> <#}#><#=classParameters.Parameters[i].ParameterType#> <#=classParameters.Parameters[i].ParameterName#>;
+   <# ;}#>
+
+   <#for(int i=0; i<methods.Count;i++){#>
+	 <#if(!String.IsNullOrEmpty(methods[i].AccessModifier)){#><#=methods[i].AccessModifier#><#}#> <#=methods[i].ReturnType#> <#=methods[i].MethodName#>(<#if(methods[i].Parameters!=null)for(int j=0; j < methods[i].Parameters.Count;j++){#><#=methods[i].Parameters[j].ParameterType#> <#=methods[i].Parameters[j].ParameterName#><#}#>
+);
+   <# ;}#>
+   }
+}
