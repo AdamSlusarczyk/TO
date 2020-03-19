@@ -5,16 +5,68 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ parameter type="System.Collections.Generic.List<Pattern.Model.Method>" name="methods" #>
 <#@ parameter type="Pattern.Model.ClassData" name="classParameters" #>
-namespace <#=classParameters.Namespace#> {
+namespace <#=classParameters.Namespace#>
 {
    public class <#=classParameters.ClassName#><#if(!String.IsNullOrEmpty(classParameters.BaseClassName)){#> : <#=classParameters.BaseClassName#><#}#>{
-   <#for(int i=0; i<classParameters.Parameters.Count;i++){#>
-	 <#if(!String.IsNullOrEmpty(classParameters.Parameters[i].AccessModifier)){#><#=classParameters.Parameters[i].AccessModifier#> <#}#><#=classParameters.Parameters[i].ParameterType#> <#=classParameters.Parameters[i].ParameterName#>;
-   <# ;}#>
+  <# WriteParameters(classParameters.Parameters);#>
 
    <#for(int i=0; i<methods.Count;i++){#>
 	 <#if(!String.IsNullOrEmpty(methods[i].AccessModifier)){#><#=methods[i].AccessModifier#><#}#> <#=methods[i].ReturnType#> <#=methods[i].MethodName#>(<#if(methods[i].Parameters!=null)for(int j=0; j < methods[i].Parameters.Count;j++){#><#=methods[i].Parameters[j].ParameterType#> <#=methods[i].Parameters[j].ParameterName#><#}#>
 );
-   <# ;}#>
+   <# ;}
+   WriteParameterlessConstructor(classParameters.ClassName);
+   WriteConstructorWithParameters(classParameters.ClassName,classParameters.Parameters);
+   #>
    }
 }
+
+<#+
+public void WriteParameters(System.Collections.Generic.List<Pattern.Model.Parameter> parameters)
+{
+	if(parameters != null && parameters.Any())
+	{
+	for(int i=0; i<parameters.Count;i++){
+	 if(!String.IsNullOrEmpty(parameters[i].AccessModifier)){#>
+	 <#=parameters[i].AccessModifier#> <#+}#><#=parameters[i].ParameterType#> <#=parameters[i].ParameterName#>;
+   <#+;}
+	}
+}
+
+public void WriteParametersWithoutAccessModifierInMethodOrConstructor(System.Collections.Generic.List<Pattern.Model.Parameter> parameters)
+{
+	if(parameters != null && parameters.Any())
+	{
+	for(int i=0; i<parameters.Count;i++){#>
+<#=parameters[i].ParameterType#> <#=parameters[i].ParameterName#><#+if(i != (parameters.Count - 1)){#>,
+   <#+}
+   }
+ }
+}
+
+public void WriteParameterlessConstructor(string className)
+{
+	if(!String.IsNullOrEmpty(className))
+	{#>
+	 public <#=className#>(){}
+   <#+
+	}
+}
+
+public void WriteConstructorWithParameters(string className, System.Collections.Generic.List<Pattern.Model.Parameter> parameters)
+{
+if(!String.IsNullOrEmpty(className) && parameters!=null && parameters.Count>0)
+	{#>
+	 public <#=className#>(<#+WriteParametersWithoutAccessModifierInMethodOrConstructor(parameters);#>){
+	 }
+<#+
+	}
+}
+
+object GetDefaultValue(Type t)
+{
+    if (t.IsValueType)
+        return Activator.CreateInstance(t);
+
+    return null;
+}
+#>
