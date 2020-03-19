@@ -5,22 +5,39 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ parameter type="System.Collections.Generic.List<Pattern.Model.Method>" name="methods" #>
 <#@ parameter type="Pattern.Model.ClassData" name="classParameters" #>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 namespace <#=classParameters.Namespace#>
 {
    public class <#=classParameters.ClassName#><#if(!String.IsNullOrEmpty(classParameters.BaseClassName)){#> : <#=classParameters.BaseClassName#><#}#>{
-  <# WriteParameters(classParameters.Parameters);#>
-
-   <#for(int i=0; i<methods.Count;i++){#>
-	 <#if(!String.IsNullOrEmpty(methods[i].AccessModifier)){#><#=methods[i].AccessModifier#><#}#> <#=methods[i].ReturnType#> <#=methods[i].MethodName#>(<#if(methods[i].Parameters!=null)for(int j=0; j < methods[i].Parameters.Count;j++){#><#=methods[i].Parameters[j].ParameterType#> <#=methods[i].Parameters[j].ParameterName#><#}#>
-);
-   <# ;}
+  <# WriteParameters(classParameters.Parameters);
+   WriteMethods(classParameters.Methods);
    WriteParameterlessConstructor(classParameters.ClassName);
-   WriteConstructorWithParameters(classParameters.ClassName,classParameters.Parameters);
    #>
    }
 }
 
 <#+
+public void WriteMethods(System.Collections.Generic.List<Pattern.Model.Method> methods)
+{
+	if(methods != null && methods.Any())
+	{
+		for(int i=0; i<methods.Count;i++){
+			if(!String.IsNullOrEmpty(methods[i].AccessModifier)) {
+	#><#=methods[i].AccessModifier#><#+}#> <#=methods[i].ReturnType#> <#=methods[i].MethodName#>(<#+WriteParametersWithoutAccessModifierInMethodOrConstructor(methods[i].Parameters);#>){
+	<#+if(!methods[i].ReturnType.ToUpper().Equals("VOID")){
+		WriteDefaultReturnValue(methods[i].ReturnType);#>
+}<#+
+		} 
+	}
+	 }
+}
+
 public void WriteParameters(System.Collections.Generic.List<Pattern.Model.Parameter> parameters)
 {
 	if(parameters != null && parameters.Any())
@@ -57,16 +74,36 @@ public void WriteConstructorWithParameters(string className, System.Collections.
 if(!String.IsNullOrEmpty(className) && parameters!=null && parameters.Count>0)
 	{#>
 	 public <#=className#>(<#+WriteParametersWithoutAccessModifierInMethodOrConstructor(parameters);#>){
+	  <#+AssignValuesFromParameters(parameters);#>
 	 }
 <#+
 	}
 }
 
-object GetDefaultValue(Type t)
+public void AssignValuesFromParameters(System.Collections.Generic.List<Pattern.Model.Parameter> parameters)
 {
-    if (t.IsValueType)
-        return Activator.CreateInstance(t);
+	if(parameters != null && parameters.Any())
+	{
+	for(int i=0; i<parameters.Count;i++){#>
+	this.<#=parameters[i].ParameterName#> = <#=parameters[i].ParameterName#>;
+   <#+}
+   }
+}
 
-    return null;
+
+public void WriteDefaultReturnValue(string t)
+{
+	if(t.ToUpper().Equals("BOOL")){
+		#>
+return false;<#+
+		}
+    else if (t.ToUpper().Equals("FLOAT")||t.ToUpper().Equals("DOUBLE")||t.ToUpper().Equals("DECIMAL"))#>
+return 0.0;<#+
+	else if (t.ToUpper().Equals("SBYTE")||t.ToUpper().Equals("BYTE")||t.ToUpper().Equals("SHORT")
+	||t.ToUpper().Equals("USHORT")||t.ToUpper().Equals("INT")||t.ToUpper().Equals("INTEGER")||t.ToUpper().Equals("UINT")
+	||t.ToUpper().Equals("LONG")||t.ToUpper().Equals("ULONG"))#>
+        return 0;<#+
+    else #>
+	return null;<#+
 }
 #>

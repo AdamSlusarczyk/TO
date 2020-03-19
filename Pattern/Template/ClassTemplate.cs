@@ -28,118 +28,46 @@ namespace Pattern.Template
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("namespace ");
+            this.Write("\r\nusing System;\r\nusing System.Collections.Generic;\r\nusing System.Linq;\r\nusing Sys" +
+                    "tem.Text;\r\nusing System.Threading.Tasks;\r\n\r\nnamespace ");
             
-            #line 8 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+            #line 15 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(classParameters.Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n   public class ");
             
-            #line 10 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+            #line 17 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(classParameters.ClassName));
             
             #line default
             #line hidden
             
-            #line 10 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+            #line 17 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
 if(!String.IsNullOrEmpty(classParameters.BaseClassName)){
             
             #line default
             #line hidden
             this.Write(" : ");
             
-            #line 10 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+            #line 17 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(classParameters.BaseClassName));
             
             #line default
             #line hidden
             
-            #line 10 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+            #line 17 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
 }
             
             #line default
             #line hidden
             this.Write("{\r\n  ");
             
-            #line 11 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+            #line 18 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
  WriteParameters(classParameters.Parameters);
-            
-            #line default
-            #line hidden
-            this.Write("\r\n   ");
-            
-            #line 13 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
-for(int i=0; i<methods.Count;i++){
-            
-            #line default
-            #line hidden
-            this.Write("\t ");
-            
-            #line 14 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
-if(!String.IsNullOrEmpty(methods[i].AccessModifier)){
-            
-            #line default
-            #line hidden
-            
-            #line 14 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(methods[i].AccessModifier));
-            
-            #line default
-            #line hidden
-            
-            #line 14 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
-}
-            
-            #line default
-            #line hidden
-            this.Write(" ");
-            
-            #line 14 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(methods[i].ReturnType));
-            
-            #line default
-            #line hidden
-            this.Write(" ");
-            
-            #line 14 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(methods[i].MethodName));
-            
-            #line default
-            #line hidden
-            this.Write("(");
-            
-            #line 14 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
-if(methods[i].Parameters!=null)for(int j=0; j < methods[i].Parameters.Count;j++){
-            
-            #line default
-            #line hidden
-            
-            #line 14 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(methods[i].Parameters[j].ParameterType));
-            
-            #line default
-            #line hidden
-            this.Write(" ");
-            
-            #line 14 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(methods[i].Parameters[j].ParameterName));
-            
-            #line default
-            #line hidden
-            
-            #line 14 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
-}
-            
-            #line default
-            #line hidden
-            this.Write(");\r\n   ");
-            
-            #line 16 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
- ;}
+   WriteMethods(classParameters.Methods);
    WriteParameterlessConstructor(classParameters.ClassName);
-   WriteConstructorWithParameters(classParameters.ClassName,classParameters.Parameters);
    
             
             #line default
@@ -148,7 +76,100 @@ if(methods[i].Parameters!=null)for(int j=0; j < methods[i].Parameters.Count;j++)
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 23 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+        #line 25 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+
+public void WriteMethods(System.Collections.Generic.List<Pattern.Model.Method> methods)
+{
+	if(methods != null && methods.Any())
+	{
+		for(int i=0; i<methods.Count;i++){
+			if(!String.IsNullOrEmpty(methods[i].AccessModifier)) {
+	
+        
+        #line default
+        #line hidden
+        
+        #line 32 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(methods[i].AccessModifier));
+
+        
+        #line default
+        #line hidden
+        
+        #line 32 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+}
+        
+        #line default
+        #line hidden
+        
+        #line 32 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+this.Write(" ");
+
+        
+        #line default
+        #line hidden
+        
+        #line 32 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(methods[i].ReturnType));
+
+        
+        #line default
+        #line hidden
+        
+        #line 32 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+this.Write(" ");
+
+        
+        #line default
+        #line hidden
+        
+        #line 32 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(methods[i].MethodName));
+
+        
+        #line default
+        #line hidden
+        
+        #line 32 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+this.Write("(");
+
+        
+        #line default
+        #line hidden
+        
+        #line 32 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+WriteParametersWithoutAccessModifierInMethodOrConstructor(methods[i].Parameters);
+        
+        #line default
+        #line hidden
+        
+        #line 32 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+this.Write("){\r\n\t");
+
+        
+        #line default
+        #line hidden
+        
+        #line 33 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+if(!methods[i].ReturnType.ToUpper().Equals("VOID")){
+		WriteDefaultReturnValue(methods[i].ReturnType);
+        
+        #line default
+        #line hidden
+        
+        #line 34 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+this.Write("}");
+
+        
+        #line default
+        #line hidden
+        
+        #line 35 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+
+		} 
+	}
+	 }
+}
 
 public void WriteParameters(System.Collections.Generic.List<Pattern.Model.Parameter> parameters)
 {
@@ -160,62 +181,62 @@ public void WriteParameters(System.Collections.Generic.List<Pattern.Model.Parame
         #line default
         #line hidden
         
-        #line 29 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+        #line 46 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
 this.Write("\t ");
 
         
         #line default
         #line hidden
         
-        #line 30 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+        #line 47 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(parameters[i].AccessModifier));
 
         
         #line default
         #line hidden
         
-        #line 30 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+        #line 47 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
 this.Write(" ");
 
         
         #line default
         #line hidden
         
-        #line 30 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+        #line 47 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
 }
         
         #line default
         #line hidden
         
-        #line 30 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+        #line 47 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(parameters[i].ParameterType));
 
         
         #line default
         #line hidden
         
-        #line 30 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+        #line 47 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
 this.Write(" ");
 
         
         #line default
         #line hidden
         
-        #line 30 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+        #line 47 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(parameters[i].ParameterName));
 
         
         #line default
         #line hidden
         
-        #line 30 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+        #line 47 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
 this.Write(";\r\n   ");
 
         
         #line default
         #line hidden
         
-        #line 31 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+        #line 48 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
 ;}
 	}
 }
@@ -229,41 +250,41 @@ public void WriteParametersWithoutAccessModifierInMethodOrConstructor(System.Col
         #line default
         #line hidden
         
-        #line 40 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+        #line 57 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(parameters[i].ParameterType));
 
         
         #line default
         #line hidden
         
-        #line 40 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+        #line 57 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
 this.Write(" ");
 
         
         #line default
         #line hidden
         
-        #line 40 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+        #line 57 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(parameters[i].ParameterName));
 
         
         #line default
         #line hidden
         
-        #line 40 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+        #line 57 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
 if(i != (parameters.Count - 1)){
         
         #line default
         #line hidden
         
-        #line 40 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+        #line 57 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
 this.Write(",\r\n   ");
 
         
         #line default
         #line hidden
         
-        #line 41 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+        #line 58 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
 }
    }
  }
@@ -277,28 +298,28 @@ public void WriteParameterlessConstructor(string className)
         #line default
         #line hidden
         
-        #line 49 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+        #line 66 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
 this.Write("\t public ");
 
         
         #line default
         #line hidden
         
-        #line 50 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+        #line 67 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(className));
 
         
         #line default
         #line hidden
         
-        #line 50 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+        #line 67 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
 this.Write("(){}\r\n   ");
 
         
         #line default
         #line hidden
         
-        #line 51 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+        #line 68 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
 
 	}
 }
@@ -311,51 +332,170 @@ if(!String.IsNullOrEmpty(className) && parameters!=null && parameters.Count>0)
         #line default
         #line hidden
         
-        #line 58 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+        #line 75 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
 this.Write("\t public ");
 
         
         #line default
         #line hidden
         
-        #line 59 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+        #line 76 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(className));
 
         
         #line default
         #line hidden
         
-        #line 59 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+        #line 76 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
 this.Write("(");
 
         
         #line default
         #line hidden
         
-        #line 59 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+        #line 76 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
 WriteParametersWithoutAccessModifierInMethodOrConstructor(parameters);
         
         #line default
         #line hidden
         
-        #line 59 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
-this.Write("){\r\n\t }\r\n");
+        #line 76 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+this.Write("){\r\n\t  ");
 
         
         #line default
         #line hidden
         
-        #line 61 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+        #line 77 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+AssignValuesFromParameters(parameters);
+        
+        #line default
+        #line hidden
+        
+        #line 77 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+this.Write("\t }\r\n");
+
+        
+        #line default
+        #line hidden
+        
+        #line 79 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
 
 	}
 }
 
-object GetDefaultValue(Type t)
+public void AssignValuesFromParameters(System.Collections.Generic.List<Pattern.Model.Parameter> parameters)
 {
-    if (t.IsValueType)
-        return Activator.CreateInstance(t);
+	if(parameters != null && parameters.Any())
+	{
+	for(int i=0; i<parameters.Count;i++){
+        
+        #line default
+        #line hidden
+        
+        #line 87 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+this.Write("\tthis.");
 
-    return null;
+        
+        #line default
+        #line hidden
+        
+        #line 88 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(parameters[i].ParameterName));
+
+        
+        #line default
+        #line hidden
+        
+        #line 88 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+this.Write(" = ");
+
+        
+        #line default
+        #line hidden
+        
+        #line 88 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(parameters[i].ParameterName));
+
+        
+        #line default
+        #line hidden
+        
+        #line 88 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+this.Write(";\r\n   ");
+
+        
+        #line default
+        #line hidden
+        
+        #line 89 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+}
+   }
+}
+
+
+public void WriteDefaultReturnValue(string t)
+{
+	if(t.ToUpper().Equals("BOOL")){
+		
+        
+        #line default
+        #line hidden
+        
+        #line 97 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+this.Write("return false;");
+
+        
+        #line default
+        #line hidden
+        
+        #line 98 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+
+		}
+    else if (t.ToUpper().Equals("FLOAT")||t.ToUpper().Equals("DOUBLE")||t.ToUpper().Equals("DECIMAL"))
+        
+        #line default
+        #line hidden
+        
+        #line 100 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+this.Write("return 0.0;");
+
+        
+        #line default
+        #line hidden
+        
+        #line 101 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+
+	else if (t.ToUpper().Equals("SBYTE")||t.ToUpper().Equals("BYTE")||t.ToUpper().Equals("SHORT")
+	||t.ToUpper().Equals("USHORT")||t.ToUpper().Equals("INT")||t.ToUpper().Equals("INTEGER")||t.ToUpper().Equals("UINT")
+	||t.ToUpper().Equals("LONG")||t.ToUpper().Equals("ULONG"))
+        
+        #line default
+        #line hidden
+        
+        #line 104 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+this.Write("        return 0;");
+
+        
+        #line default
+        #line hidden
+        
+        #line 105 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+
+    else 
+        
+        #line default
+        #line hidden
+        
+        #line 106 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+this.Write("\treturn null;");
+
+        
+        #line default
+        #line hidden
+        
+        #line 107 "C:\Users\Admin\source\repos\Pattern\Pattern\Template\ClassTemplate.tt"
+
 }
 
         
