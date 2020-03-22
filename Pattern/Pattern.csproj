@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\ClassData.cs" />
+    <Compile Include="Model\DecoratorIn.cs" />
     <Compile Include="Model\InterfaceData.cs" />
     <Compile Include="Model\Method.cs" />
     <Compile Include="Model\Parameter.cs" />

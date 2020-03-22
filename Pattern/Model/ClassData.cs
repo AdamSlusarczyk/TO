@@ -11,25 +11,18 @@ namespace Pattern.Model
         public string Namespace { get; set; }
         public string ClassName { get; set; }
         public List<Method> Methods { get; set; }
+        public List<Method> OverriddenMethods { get; set; }
         public List<Parameter> Parameters { get; set; }
         public string BaseClassName { get; set; }
 
-        public ClassData(string @namespace, string className, List<Method> methods, string baseClassName)
+        public ClassData(string @namespace, string className, string baseClassName)
         {
             Namespace = @namespace;
             ClassName = className;
-            Methods = methods;
             BaseClassName = baseClassName;
+            Methods = new List<Method>();
+            OverriddenMethods = new List<Method>();
             Parameters = new List<Parameter>();
-        }
-
-        public ClassData(string @namespace, string className, List<Method> methods)
-        {
-            Namespace = @namespace;
-            ClassName = className;
-            Methods = methods;
-            Parameters = new List<Parameter>();
-
         }
 
         public ClassData(string @namespace, string className)
@@ -37,43 +30,14 @@ namespace Pattern.Model
             Namespace = @namespace;
             ClassName = className;
             Methods = new List<Method>();
+            OverriddenMethods = new List<Method>();
             Parameters = new List<Parameter>();
-
         }
 
         public ClassData()
         {
             Methods = new List<Method>();
-            Parameters = new List<Parameter>();
-        }
-
-        public ClassData(string @namespace, string className, List<Method> methods, List<Parameter> parameters, string baseClassName) : this(@namespace, className, methods)
-        {
-            Parameters = parameters;
-            BaseClassName = baseClassName;
-        }
-
-        public ClassData(string @namespace, string className, List<Method> methods, List<Parameter> parameters) : this(@namespace, className, methods)
-        {
-            Parameters = parameters;
-        }
-
-        public ClassData(string @namespace, string className, List<Parameter> parameters) : this(@namespace, className)
-        {
-            Parameters = parameters;
-        }
-
-        public ClassData(string @namespace, string className, List<Parameter> parameters, string baseClassName) : this(@namespace, className, parameters)
-        {
-            BaseClassName = baseClassName;
-            Parameters = new List<Parameter>();
-
-        }
-
-        public ClassData(string @namespace, string className, string baseClassName) : this(@namespace, className)
-        {
-            BaseClassName = baseClassName;
-            Methods = new List<Method>();
+            OverriddenMethods = new List<Method>();
             Parameters = new List<Parameter>();
         }
     }
