@@ -1,0 +1,93 @@
+﻿<Page x:Class="UI.Pages.PatternDependent.DecoratorPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Pattern.Model;assembly=Pattern"
+      mc:Ignorable="d" Height="450" Width="900"
+      d:DesignHeight="450" d:DesignWidth="900"
+      Title="Wzorce Projektowe"
+      Background="White">
+
+    <Page.Resources>
+        <ObjectDataProvider MethodName="GetValues"
+                        ObjectType="{x:Type local:ClassData}"
+                        x:Key="DataAssemblyResource">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="local:ClassData" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Page.Resources>
+
+    <Grid Background="Gray" x:Name="g">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" HorizontalAlignment="Center" Margin="0,30,0,30">
+
+            <Button x:Name="btnInterfaceConfig"  Content="Konfiguruj interfejs" Width="170" Margin="0,0,0,20"/>
+            <Button x:Name="btnBaseDecoratorConfig" Content="Konfiguruj dekorator bazowy" Width="170"/>
+
+            <StackPanel Orientation="Horizontal" Margin="0,286,0,0">
+                <Button x:Name="btnGenerate" Content="Generuj" Click="BtnGenerate_Click" Width ="100" Height="25" Margin="0,0,10,0"/>
+                <Button x:Name="btnCancel" Content="Anuluj" Click="BtnCancel_Click" Width ="100" Height="25" />
+            </StackPanel>
+
+        </StackPanel>
+        
+        <StackPanel Grid.Column="1" Margin="0,10,0,0">
+            <Label Content="Lista komponentów" HorizontalAlignment="Center"></Label>
+            <Border Background="GhostWhite" BorderBrush="Gainsboro" BorderThickness="3" Margin="10">
+                <ListBox x:Name="componentList" Height="304" VerticalAlignment="Stretch">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Path=ClassName}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Border>
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="btnAddComponent" Content="Dodaj" Click="BtnAddComponent_Click" Grid.Column="0" Height="25" Margin="0,0,5,0"/>
+                <Button x:Name="btnDeleteComponent" Content="Usuń" Click="btnDeleteComponent_Click"  Grid.Column="1" Height="25" Margin="5,0,5,0"/>
+                <Button x:Name="btnConfigComponent" Content="Konfiguruj" Click="btnConfigComponent_Click" Grid.Column="2" Height="25" Margin="5,0,0,0"/>
+            </Grid>
+        </StackPanel >
+
+        <StackPanel Grid.Column="2" Margin="0,10,0,0">
+            <Label Content="Lista dekoratorów " HorizontalAlignment="Center"></Label>
+            <Border Background="GhostWhite" BorderBrush="Gainsboro" BorderThickness="3" Margin="10">
+                <ListBox x:Name="decoratorList" Height="304" VerticalAlignment="Stretch">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Path=ClassName}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Border>
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="btnAddDecorator" Content="Dodaj" Click="btnAddDecorator_Click" Grid.Column="0" Height="25" Margin="0,0,5,0"/>
+                <Button x:Name="btnDeleteDecorator" Content="Usuń" Click="btnDeleteDecorator_Click"   Grid.Column="1" Height="25" Margin="5,0,5,0"/>
+                <Button x:Name="btnConfigDecorator" Content="Konfiguruj" Click="btnConfigDecorator_Click"  Grid.Column="2" Height="25" Margin="5,0,0,0"/>
+            </Grid>
+        </StackPanel>
+        
+    </Grid>
+</Page>

@@ -1,0 +1,16 @@
+﻿<Page x:Class="UI.Pages.Shared.ClassConfigPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:UI.Pages.Shared"
+      mc:Ignorable="d"  Background="Gray"
+      Height="450" Width="900"
+      d:DesignHeight="450" d:DesignWidth="900"
+      Title="Wzorce Projektowe">
+
+      <StackPanel>
+        <Button x:Name="btnCancer"  Click="BtnCancer_Click" Content="Anuluj"/>
+        <Button x:Name="btnAccept"  Click="BtnAccept_Click" Content="Gotowe"/>
+     </StackPanel>
+</Page>
