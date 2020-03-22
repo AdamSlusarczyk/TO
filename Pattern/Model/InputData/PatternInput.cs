@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Pattern.Model
 {
-    public class Pattern
+    public class InputPattern
     {
         public string Namespace { get; set; }
     }
