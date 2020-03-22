@@ -1,0 +1,33 @@
+﻿<Page x:Class="UI.Pages.Shared.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:UI.Model"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib" 
+      mc:Ignorable="d" 
+      Title="Wzorce Projektowe" Height="200" Width="500"
+        MinHeight="200" MinWidth="500" Background="White">
+
+    <Page.Resources>
+        <ObjectDataProvider MethodName="GetValues"
+                        ObjectType="{x:Type sys:Enum}"
+                        x:Key="PatternValues">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="local:Patterns" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Page.Resources>
+
+
+
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,25">
+
+        <Label Content="Wybierz wzorzec: " HorizontalAlignment="Center" Margin="0,0,0,5"/>
+
+        <ComboBox  x:Name="comboBox" Width="200"  HorizontalAlignment="Center" Margin="0,0,0,5"
+                          ItemsSource="{Binding Source={StaticResource PatternValues}}"/>
+
+        <Button Click="BtnNext_Click"  x:Name="btnNext" Content="Dalej"  Height="25" Width="100"  HorizontalAlignment="Center" />
+    </StackPanel>
+    </Page>
